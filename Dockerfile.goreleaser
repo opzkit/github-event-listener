@@ -1,0 +1,5 @@
+FROM gcr.io/distroless/base-debian12:nonroot
+ARG TARGETPLATFORM
+COPY ${TARGETPLATFORM}/github-event-listener /usr/local/bin/github-event-listener
+EXPOSE 8080
+ENTRYPOINT ["github-event-listener"]

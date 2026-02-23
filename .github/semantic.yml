@@ -1,0 +1,4 @@
+# Always validate the PR title, ignore the commits
+titleOnly: true
+# Disallows use of Merge commits
+allowMergeCommits: false

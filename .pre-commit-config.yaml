@@ -1,0 +1,43 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: check-executables-have-shebangs
+      - id: check-shebang-scripts-are-executable
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-json
+      - id: check-merge-conflict
+      - id: no-commit-to-branch
+      - id: check-added-large-files
+
+  - repo: https://github.com/renovatebot/pre-commit-hooks
+    rev: 43.10.2
+    hooks:
+      - id: renovate-config-validator
+        args: [--strict]
+
+  - repo: local
+    hooks:
+      - id: typecheck
+        name: typecheck
+        entry: bun run typecheck
+        language: system
+        types: [ts]
+        pass_filenames: false
+
+      - id: lint
+        name: lint
+        entry: bun run lint
+        language: system
+        types: [ts]
+        pass_filenames: false
+
+      - id: format-check
+        name: format-check
+        entry: bun run format:check
+        language: system
+        pass_filenames: false

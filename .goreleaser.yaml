@@ -1,0 +1,39 @@
+# yaml-language-server: $schema=https://goreleaser.com/static/schema.json
+version: 2
+
+project_name: github-event-listener
+
+builds:
+  - builder: bun
+    main: src/index.ts
+    targets:
+      - linux-x64-modern
+      - linux-arm64
+
+archives:
+
+dockers_v2:
+  - dockerfile: Dockerfile.goreleaser
+    images:
+      - ghcr.io/opzkit/github-event-listener
+    tags:
+      - "{{ .Version }}"
+      - "{{ .Major }}.{{ .Minor }}"
+      - latest
+    platforms:
+      - linux/amd64
+      - linux/arm64
+    labels:
+      org.opencontainers.image.title: "{{ .ProjectName }}"
+      org.opencontainers.image.description: GitHub organization webhook listener that publishes events to RabbitMQ
+      org.opencontainers.image.url: https://github.com/opzkit/github-event-listener
+      org.opencontainers.image.source: https://github.com/opzkit/github-event-listener
+      org.opencontainers.image.version: "{{ .Version }}"
+      org.opencontainers.image.created: "{{ .Date }}"
+      org.opencontainers.image.revision: "{{ .FullCommit }}"
+
+changelog:
+  disable: true
+
+release:
+  disable: true
