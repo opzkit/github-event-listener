@@ -1,5 +1,5 @@
 # Use Bun's official image
-FROM oven/bun:1 AS base
+FROM oven/bun:1@sha256:b86c67b531d87b4db11470d9b2bd0c519b1976eee6fcd71634e73abfa6230d2e AS base
 WORKDIR /app
 
 # Install dependencies
