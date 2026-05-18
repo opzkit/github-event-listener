@@ -16,7 +16,9 @@ export interface AMQPConnection {
 export async function createAMQPConnection(config: AMQPConfig): Promise<AMQPConnection> {
   let closing = false
 
-  const connection = await amqplib.connect(config.url, { heartbeat: config.heartbeat })
+  const url = new URL(config.url)
+  url.searchParams.set('heartbeat', String(config.heartbeat))
+  const connection = await amqplib.connect(url.toString())
 
   connection.on('error', (err) => {
     console.error('AMQP connection error:', err.message)
