@@ -1,4 +1,4 @@
-FROM gcr.io/distroless/base-debian12:nonroot@sha256:6c806311d31c11d364a8d13a022af5a48f29e43bd585ad6b51f1bb447f83d239
+FROM gcr.io/distroless/base-debian12:nonroot@sha256:63f52bd27b6aa6555f5d56500b70d7bb0afe51c654905be88a2c1cf967a77b1a
 ARG TARGETPLATFORM
 COPY ${TARGETPLATFORM}/github-event-listener /usr/local/bin/github-event-listener
 EXPOSE 8080
