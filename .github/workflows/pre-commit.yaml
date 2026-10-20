@@ -9,7 +9,7 @@ on:
 
 jobs:
   pre-commit:
-    runs-on: ubuntu-24.04-arm
+    runs-on: ubuntu-26.04-arm
     env:
       SKIP: no-commit-to-branch
     steps:
